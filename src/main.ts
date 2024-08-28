@@ -37,6 +37,8 @@ async function bootstrap() {
     app.use(Sentry.Handlers.errorHandler());
   }
 
+  console.log('Meio 1')
+
   let providerFiles: ProviderFiles = null;
   if (configService.get<ProviderSession>('PROVIDER').ENABLED) {
     providerFiles = new ProviderFiles(configService);
@@ -66,6 +68,9 @@ async function bootstrap() {
     json({ limit: '136mb' }),
     compression(),
   );
+
+  console.log('Meio 2')
+
 
   app.set('view engine', 'hbs');
   app.set('views', join(ROOT_DIR, 'views'));
@@ -135,6 +140,9 @@ async function bootstrap() {
       next();
     },
   );
+
+  console.log('Meio 3')
+
 
   const httpServer = configService.get<HttpServer>('SERVER');
 
