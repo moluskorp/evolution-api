@@ -20,7 +20,6 @@ function initWA() {
 }
 
 async function bootstrap() {
-  console.log('inicio bootstrap')
   const logger = new Logger('SERVER');
   const app = express();
   const dsn = process.env.SENTRY_DSN;
@@ -37,7 +36,6 @@ async function bootstrap() {
     app.use(Sentry.Handlers.errorHandler());
   }
 
-  console.log('Meio 1')
 
   let providerFiles: ProviderFiles = null;
   if (configService.get<ProviderSession>('PROVIDER').ENABLED) {
@@ -68,9 +66,6 @@ async function bootstrap() {
     json({ limit: '136mb' }),
     compression(),
   );
-
-  console.log('Meio 2')
-
 
   app.set('view engine', 'hbs');
   app.set('views', join(ROOT_DIR, 'views'));
@@ -141,20 +136,23 @@ async function bootstrap() {
     },
   );
 
-  console.log('Meio 3')
-
-
+  console.log('Ponto 1')
+  
+  
   const httpServer = configService.get<HttpServer>('SERVER');
-
+  
   ServerUP.app = app;
   const server = ServerUP[httpServer.TYPE];
-
+  
+  console.log('Ponto 2')
   eventManager.init(server);
-
+  
   server.listen(httpServer.PORT, () => logger.log(httpServer.TYPE.toUpperCase() + ' - ON: ' + httpServer.PORT));
-
+  console.log('Ponto 3')
+  
   initWA();
-
+  console.log('Ponto 4')
+  
   onUnexpectedError();
   console.log('Final bootstrap')
 
