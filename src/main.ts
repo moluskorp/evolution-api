@@ -1,3 +1,4 @@
+console.log('inicio de tudo')
 import { ProviderFiles } from '@api/provider/sessions';
 import { PrismaRepository } from '@api/repository/repository.service';
 import { HttpStatus, router } from '@api/routes/index.router';
@@ -13,6 +14,8 @@ import compression from 'compression';
 import cors from 'cors';
 import express, { json, NextFunction, Request, Response, urlencoded } from 'express';
 import { join } from 'path';
+console.log('Depois importações')
+
 
 function initWA() {
   waMonitor.loadInstance();
@@ -148,4 +151,6 @@ async function bootstrap() {
   onUnexpectedError();
 }
 
+console.log('Antes da função')
 bootstrap();
+console.log('Depois da função')
