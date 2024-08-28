@@ -1,4 +1,3 @@
-console.log('inicio de tudo')
 import { ProviderFiles } from '@api/provider/sessions';
 import { PrismaRepository } from '@api/repository/repository.service';
 import { HttpStatus, router } from '@api/routes/index.router';
@@ -14,7 +13,6 @@ import compression from 'compression';
 import cors from 'cors';
 import express, { json, NextFunction, Request, Response, urlencoded } from 'express';
 import { join } from 'path';
-console.log('Depois importações')
 
 
 function initWA() {
@@ -22,6 +20,7 @@ function initWA() {
 }
 
 async function bootstrap() {
+  console.log('inicio bootstrap')
   const logger = new Logger('SERVER');
   const app = express();
   const dsn = process.env.SENTRY_DSN;
@@ -149,8 +148,8 @@ async function bootstrap() {
   initWA();
 
   onUnexpectedError();
+  console.log('Final bootstrap')
+
 }
 
-console.log('Antes da função')
 bootstrap();
-console.log('Depois da função')
