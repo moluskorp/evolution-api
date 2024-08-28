@@ -9,22 +9,20 @@ LABEL contact="contato@atendai.com"
 
 WORKDIR /evolution
 
-COPY . .
-
-#COPY ./package.json ./
-#COPY ./tsconfig.json ./
+COPY ./package.json ./
+COPY ./tsconfig.json ./
 
 RUN npm install
 
-#COPY ./src ./src
-#COPY ./public ./public
-#COPY ./prisma ./prisma
-#COPY ./manager ./manager
-#COPY ./.env.example ./.env
-#COPY ./runWithProvider.js ./
-#COPY ./tsup.config.ts ./
+COPY ./src ./src
+COPY ./public ./public
+COPY ./prisma ./prisma
+COPY ./manager ./manager
+COPY ./.env.example ./.env
+COPY ./runWithProvider.js ./
+COPY ./tsup.config.ts ./
 
-#COPY ./Docker ./Docker
+COPY ./Docker ./Docker
 
 RUN chmod +x ./Docker/scripts/* && dos2unix ./Docker/scripts/*
 
