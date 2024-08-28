@@ -9,19 +9,22 @@ LABEL contact="contato@atendai.com"
 
 WORKDIR /evolution
 
-COPY ./package.json ./tsconfig.json ./
+COPY . .
+
+#COPY ./package.json ./
+#COPY ./tsconfig.json ./
 
 RUN npm install
 
-COPY ./src ./src
-COPY ./public ./public
-COPY ./prisma ./prisma
-COPY ./manager ./manager
-COPY ./.env.example ./.env
-COPY ./runWithProvider.js ./
-COPY ./tsup.config.ts ./
+#COPY ./src ./src
+#COPY ./public ./public
+#COPY ./prisma ./prisma
+#COPY ./manager ./manager
+#COPY ./.env.example ./.env
+#COPY ./runWithProvider.js ./
+#COPY ./tsup.config.ts ./
 
-COPY ./Docker ./Docker
+#COPY ./Docker ./Docker
 
 RUN chmod +x ./Docker/scripts/* && dos2unix ./Docker/scripts/*
 
@@ -149,7 +152,7 @@ ENV WA_BUSINESS_LANGUAGE=en_US
 # Each instance's Webhook URL and events will be requested at the time it is created
 ENV WEBHOOK_GLOBAL_ENABLED=false
 # Define a global webhook that will listen for enabled events from all instances
-ENV WEBHOOK_GLOBAL_URL=''
+ENV WEBHOOK_GLOBAL_URL='webhook_global_url'
 # With this option activated, you work with a url per webhook event, respecting the global url and the name of each event
 ENV WEBHOOK_GLOBAL_WEBHOOK_BY_EVENTS=false
 # Set the events you want to hear
