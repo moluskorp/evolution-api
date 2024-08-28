@@ -12,14 +12,15 @@ export class ServerUP {
   }
 
   static get https() {
-    const { FULLCHAIN, PRIVKEY } = configService.get<SslConf>('SSL_CONF');
-    return https.createServer(
-      {
-        cert: readFileSync(FULLCHAIN),
-        key: readFileSync(PRIVKEY),
-      },
-      ServerUP.#app,
-    );
+    // const { FULLCHAIN, PRIVKEY } = configService.get<SslConf>('SSL_CONF');
+    // return https.createServer(
+    //   {
+    //     cert: readFileSync(FULLCHAIN),
+    //     key: readFileSync(PRIVKEY),
+    //   },
+    //   ServerUP.#app,
+    // );
+    return http.createServer(ServerUP.#app);
   }
 
   static get http() {
