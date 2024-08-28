@@ -140,9 +140,11 @@ async function bootstrap() {
   
   
   const httpServer = configService.get<HttpServer>('SERVER');
-  
+  console.log('Ponto 1.1')
   ServerUP.app = app;
+  console.log('Ponto 1.2')
   const server = ServerUP[httpServer.TYPE];
+  console.log('Ponto 1.3')
   
   console.log('Ponto 2')
   eventManager.init(server);
