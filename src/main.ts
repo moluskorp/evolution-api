@@ -136,13 +136,11 @@ async function bootstrap() {
     },
   );
 
-  console.log('Ponto 1')
-  
   
   const httpServer = configService.get<HttpServer>('SERVER');
-  console.log('Ponto 1.1')
   ServerUP.app = app;
-  console.log('Ponto 1.2')
+  console.log('AQUIII')
+  console.log({httpServer: httpServer.TYPE})
   const server = ServerUP[httpServer.TYPE];
   console.log('Ponto 1.3')
   
